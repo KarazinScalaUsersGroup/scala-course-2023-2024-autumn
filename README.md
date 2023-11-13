@@ -97,10 +97,10 @@ To verify that all works, go to the folder with the source code and run
 sbt clean compile
 ```
 
-## Updates from the course repository
+## Get updates from the course repository
 To fetch updates from the course repository execute
 ```shell
-git fetch course
+git pull course main
 ```
 
 ## New branch for each homework 
