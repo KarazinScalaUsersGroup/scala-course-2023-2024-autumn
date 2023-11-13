@@ -8,7 +8,6 @@
 * Push the local clone to your private repo
 * Create a new branch for each homework
 
-
 ## Create GitHub account
 Open https://github.com/ and follow the sign-up procedure. 
 It's better to choose a professional-like name, usually `[First][Last]` name 
@@ -19,7 +18,7 @@ Course [repo](https://github.com/KarazinScalaUsersGroup/scala-course-2023-2024-a
 
 Please **do not** fork the repo.
 
-Clone the repo to the local machine.
+Clone the repository to the local machine.
 ```shell
 git clone https://github.com/KarazinScalaUsersGroup/scala-course-2023-2024-autumn.git
 ```
@@ -29,10 +28,10 @@ sbt clean compile
 ```
 
 ## Remove .git
-In the clonned repo folder there is a hidden folder `.git`. Remove it.
+In the clonned repository folder there is a hidden folder `.git`. Remove it.
 
 ## Initialize new repo
-For initializing a new repo run in the folder with the code
+For initializing a new repository run in the folder with the code
 ```shell
 git init
 ```
@@ -47,12 +46,26 @@ git commit -m "Initializing the repo"
 a commit message after `-m` flag could be customized.
 
 ## Create a new repository on GitHub
-Create a new repository on GitHub. Please name it as the original repo `scala-course-2023-2024-autumn`.
+Create a new repository on GitHub. Please name it as the original repository `scala-course-2023-2024-autumn`.
 
-## Open the newly created repo
-Open your new repo and follow the instructions in `…or push an existing repository from the command line` section.
+## Open the newly created repository
+Open your new repository and follow the instructions in `…or push an existing repository from the command line` section.
 
 After pushing the code to your local repository you will have "original" code in `main` branch.
+
+## Updates from the course repository
+To be able to fetch updates from the course repository add new remote repository
+```shell
+ git remote add course https://github.com/KarazinScalaUsersGroup/scala-course-2023-2024-autumn.git
+```
+To prevent pushing to the course repository replace pushing url by any non-existent url, i.e. DISABLED
+```shell
+git remote set-url --push course DISABLED
+```
+To fetch updates from the course repository execute
+```shell
+git fetch course
+```
 
 ## New branch for each homework 
 **Do not** solve the homework tasks in `main` branch. You required to create a new branch for each homework.
@@ -64,3 +77,35 @@ Naming convention for homework branches:
 * `week-n` for week n
 Please follow this name convention.
 
+## How to run the project, test etc
+
+In `sbt shell` run
+```shell
+clean
+```
+
+To compile the project source code (except tests source code) run
+
+```shell
+compile
+```
+
+To compile the tests run
+```shell
+test:compile
+```
+
+To execute the tests run
+```shell
+test
+```
+
+To execute a specific test suite run 
+```shell
+testOnly <full path to the test suite>
+```
+ for example for `karazin.scala.users.group.week1.TopicSpecification` run
+ 
+```shell
+testOnly karazin.scala.users.group.week1.TopicSpecification
+```
