@@ -13,55 +13,91 @@ Open https://github.com/ and follow the sign-up procedure.
 It's better to choose a professional-like name, usually `[First][Last]` name 
 (my personal GitHub account is https://github.com/IgorWolkov).
 
-## Clone the repo
-Course [repo](https://github.com/KarazinScalaUsersGroup/scala-course-2023-2024-autumn).
+## Create a new repository on GitHub
+Create a new empty **private** repository on GitHub. Please name it as the original repository `scala-course-2023-2024-autumn`.
 
-Please **do not** fork the repo.
-
-Clone the repository to the local machine.
-```shell
+## Clone the course repository
+The course repository is [here](https://github.com/KarazinScalaUsersGroup/scala-course-2023-2024-autumn).
+You can either use Intellij IDE or do it manually.
+For manually cloning move to the directory you'd like the project to be located and execute
+````shell
 git clone https://github.com/KarazinScalaUsersGroup/scala-course-2023-2024-autumn.git
+````
+
+Please **do not** fork the repository.
+
+
+## Verify the cloned repository 
+### Check the remote 
+```shell
+git remote -v
 ```
+the output should be 
+```shell
+origin	https://github.com/KarazinScalaUsersGroup/scala-course-2023-2024-autumn.git (fetch)
+origin	https://github.com/KarazinScalaUsersGroup/scala-course-2023-2024-autumn.git (push)
+```
+### Check the branches
+```shell
+git branch
+```
+the output should be
+```shell
+* main
+```
+
+## Prevent accidental updates
+To detouch the course repository from your private remote repository rename `origin` and disable `push` to the course repository.
+
+### Rename origin
+```shell
+git remote rename origin course
+```
+execute `git remote -v`, the output should be
+```shell
+course	https://github.com/KarazinScalaUsersGroup/scala-course-2023-2024-autumn.git (fetch)
+course	https://github.com/KarazinScalaUsersGroup/scala-course-2023-2024-autumn.git (push)
+```
+### Disable push
+To prevent pushing to the course repository replace push url by any non-existent url, i.e. DISABLED
+```shell
+git remote set-url --push course DISABLED
+```
+execute `git remote -v`, the output should be
+```shell
+course	https://github.com/KarazinScalaUsersGroup/scala-course-2023-2024-autumn.git (fetch)
+course	DISABLED (push)
+```
+
+## Link the local repository to your private repository
+To link the local repository to your private GitHub repository add new `origin`.
+
+### Open the newly created repository
+Open your new GitHub repository web page and follow the instructions in `…or push an existing repository from the command line` section.
+There should be a list of commands:
+```shell
+git remote add origin <your private repository>
+git branch -M main
+git push -u origin main
+```
+Execute each command one-by-one.
+
+Execute `git remote -v`, the output should be
+```shell
+course	https://github.com/KarazinScalaUsersGroup/scala-course-2023-2024-autumn.git (fetch)
+course	DISABLED (push)
+origin  https://github.com/<your github account>/scala-course-2023-2024-autumn.git (fetch)
+origin  https://github.com/<your github account>/scala-course-2023-2024-autumn.git (push)
+```
+
+
+
 To verify that all works, go to the folder with the source code and run 
 ```shell
 sbt clean compile
 ```
 
-## Remove .git
-In the clonned repository folder there is a hidden folder `.git`. Remove it.
-
-## Initialize new repo
-For initializing a new repository run in the folder with the code
-```shell
-git init
-```
-then add all local files 
-```shell
-git add .
-```
-then commit the files
-```shell
-git commit -m "Initializing the repo"
-```
-a commit message after `-m` flag could be customized.
-
-## Create a new repository on GitHub
-Create a new repository on GitHub. Please name it as the original repository `scala-course-2023-2024-autumn`.
-
-## Open the newly created repository
-Open your new repository and follow the instructions in `…or push an existing repository from the command line` section.
-
-After pushing the code to your local repository you will have "original" code in `main` branch.
-
 ## Updates from the course repository
-To be able to fetch updates from the course repository add new remote repository
-```shell
- git remote add course https://github.com/KarazinScalaUsersGroup/scala-course-2023-2024-autumn.git
-```
-To prevent pushing to the course repository replace pushing url by any non-existent url, i.e. DISABLED
-```shell
-git remote set-url --push course DISABLED
-```
 To fetch updates from the course repository execute
 ```shell
 git fetch course
