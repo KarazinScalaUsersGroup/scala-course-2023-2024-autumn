@@ -62,5 +62,6 @@ Naming convention for homework branches:
 * `week-2` for week 2
 * ...
 * `week-n` for week n
+
 Please follow this name convention.
 
