@@ -40,9 +40,7 @@ object Homework :
 
   object `Boolean Operators` :
 
-    val int = 42
-
-    def not(b: Boolean): Boolean = ??? // here is my greatest solution
+    def not(b: Boolean): Boolean = if b then false else true
 
     def and(left: Boolean, right: Boolean): Boolean = ???
 
